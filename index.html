@@ -81,21 +81,21 @@ nav.scrolled { border-bottom-color: var(--line); }
 }
 .hero-ipad {
   width: min(640px, 88vw);
-  background: linear-gradient(150deg, #f1e4dd, #e3d2c8);
-  border-radius: 26px;
-  padding: 16px;
-  box-shadow: 0 30px 70px rgba(122,31,31,0.16), inset 0 0 0 1px rgba(255,255,255,0.4);
+  aspect-ratio: 559/362;
+  background-image: url('images/ipad-frame.jpeg');
+  background-size: 100% 100%;
   position: relative;
   margin-bottom: 3rem;
+  filter: drop-shadow(0 25px 50px rgba(122,31,31,0.18));
 }
-.hero-ipad-cam { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.25); }
 .hero-ipad-screen {
-  width: 100%; aspect-ratio: 16/10.5;
-  border-radius: 10px; overflow: hidden;
+  position: absolute;
+  /* screen bounds measured from ipad-frame.jpeg (559x362) */
+  top: 8.5%; left: 10%; right: 10%; bottom: 8.5%;
+  border-radius: 4px; overflow: hidden;
   background: linear-gradient(160deg, #fff 0%, #fdf6f4 55%, #fae9e6 100%);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 2rem;
-  position: relative;
+  padding: 1.5rem;
 }
 .hero-ipad-logo {
   font-family: 'Tangerine', cursive; font-weight: 700;
@@ -161,7 +161,16 @@ nav.scrolled { border-bottom-color: var(--line); }
 .body-text { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.95; }
 
 /* ── ABOUT — handwritten sentences ── */
-#about { background: var(--white); }
+#about { background: var(--white); position: relative; overflow: hidden; }
+.about-backdrop {
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 480px; max-width: 90vw;
+  opacity: 0.16;
+  pointer-events: none;
+  z-index: 0;
+}
+.about-wrap { position: relative; z-index: 1; }
 .about-wrap { max-width: 680px; margin: 0 auto; text-align: center; position: relative; }
 .about-lines p {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
@@ -202,15 +211,20 @@ nav.scrolled { border-bottom-color: var(--line); }
 .ipad-row { display: flex; justify-content: center; align-items: flex-end; gap: 2.6rem; flex-wrap: wrap; margin-top: 3rem; }
 .ipad-frame {
   width: 300px;
-  background: linear-gradient(150deg, #2c2622, #18130f);
-  border-radius: 18px; padding: 13px;
-  box-shadow: 0 25px 55px rgba(122,31,31,0.14), inset 0 0 0 1px rgba(255,255,255,0.05);
-  position: relative; transition: transform 0.4s ease;
+  aspect-ratio: 559/362;
+  background-image: url('images/ipad-frame.jpeg');
+  background-size: 100% 100%;
+  position: relative;
+  transition: transform 0.4s ease;
+  filter: drop-shadow(0 20px 40px rgba(122,31,31,0.16));
 }
 .ipad-frame:hover { transform: translateY(-6px); }
 .ipad-frame.mid { width: 340px; margin-bottom: 1.2rem; }
-.ipad-cam { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: #555; }
-.ipad-screen { width: 100%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden; background: #111; }
+.ipad-screen {
+  position: absolute;
+  top: 8.5%; left: 10%; right: 10%; bottom: 8.5%;
+  border-radius: 3px; overflow: hidden; background: #111;
+}
 .ipad-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 .ipad-screen-empty {
   width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
@@ -229,60 +243,39 @@ nav.scrolled { border-bottom-color: var(--line); }
 }
 .ipad-link:hover { color: var(--crimson); border-color: var(--crimson); }
 
-/* ── CONTACT — heart filigree form ── */
+/* ── CONTACT — real image overlay form ── */
 #contact { background: var(--blush); }
-.contact-wrap { max-width: 620px; margin: 3rem auto 0; }
-.contact-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 3rem 2.6rem 2.6rem;
+.contact-wrap { max-width: 480px; margin: 3rem auto 0; }
+.contact-card-img {
   position: relative;
-  box-shadow: 0 20px 60px rgba(122,31,31,0.07);
+  width: 100%;
+  aspect-ratio: 865/1024;
+  background-image: url('images/contact-form-bg.png');
+  background-size: 100% 100%;
+  filter: drop-shadow(0 20px 50px rgba(122,31,31,0.1));
 }
-.contact-thorn-rule {
-  height: 14px; margin-bottom: 2rem;
-  background-repeat: repeat-x; background-size: 24px 14px; background-position: center;
-  opacity: 0.5;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='14' viewBox='0 0 24 14'%3E%3Cpath d='M0 7 Q6 1 12 7 T24 7' stroke='%239E2B2B' stroke-width='1' fill='none'/%3E%3Cpath d='M3 4 L1 1 M9 3 L11 0 M15 4 L13 1 M21 3 L23 0' stroke='%239E2B2B' stroke-width='0.8'/%3E%3C/svg%3E");
+.contact-card-img form { position: absolute; inset: 0; }
+.ov-field {
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  color: var(--ink);
+  -webkit-appearance: none;
 }
-.form-field { position: relative; margin-bottom: 1.4rem; }
-.form-field label {
-  display: block; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--ink-soft); margin-bottom: 0.5rem;
+.ov-field::placeholder { color: #B89A8F; font-style: italic; opacity: 0.85; }
+/* coordinates measured as % against 865x1024 source image */
+.ov-name   { top: 25.0%; left: 23.5%; width: 62%; height: 5.2%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); }
+.ov-email  { top: 34.0%; left: 23.5%; width: 62%; height: 5.2%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); }
+.ov-subject{ top: 43.0%; left: 23.5%; width: 62%; height: 5.2%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); cursor: pointer; }
+.ov-subject option { font-style: normal; color: var(--ink); }
+.ov-message{ top: 51.5%; left: 13.5%; width: 73%; height: 19%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); resize: none; line-height: 1.5; padding-top: 0.3rem; }
+.ov-submit {
+  position: absolute;
+  top: 79.5%; left: 22%; width: 56%; height: 7%;
+  background: transparent; border: none; cursor: pointer;
 }
-.form-field input,
-.form-field textarea,
-.form-field select {
-  width: 100%; background: var(--blush);
-  border: 1px solid var(--line); border-radius: 4px;
-  padding: 0.85rem 1rem;
-  font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem;
-  color: var(--ink); outline: none;
-  transition: border-color 0.2s; -webkit-appearance: none;
-}
-.form-field input:focus,
-.form-field textarea:focus,
-.form-field select:focus { border-color: var(--crimson); }
-.form-field input::placeholder,
-.form-field textarea::placeholder { color: #C9A8A4; font-style: italic; }
-.form-field select { color: var(--ink-soft); cursor: pointer; }
-.form-field select option { color: var(--ink); font-style: normal; }
-.form-field textarea { resize: none; height: 110px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-.form-heart-corner { position: absolute; width: 26px; height: 26px; opacity: 0.55; }
-.form-heart-corner svg { width: 100%; height: 100%; stroke: var(--crimson); fill: none; stroke-width: 1; }
-.form-heart-tl { top: 8px; left: 8px; }
-.form-heart-br { bottom: 8px; right: 8px; transform: rotate(180deg); }
-.form-submit-wrap { text-align: center; margin-top: 0.6rem; }
-.form-submit {
-  background: var(--crimson); color: var(--white);
-  border: none; padding: 0.9rem 2.6rem; border-radius: 30px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-  cursor: pointer; transition: background 0.2s;
-}
-.form-submit:hover { background: var(--crimson-dk); }
 .form-ok {
   display: none; margin-top: 1.6rem; text-align: center;
   font-family: 'Tangerine', cursive; font-weight: 700; font-size: 2rem; color: var(--crimson);
@@ -383,7 +376,6 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
   </svg>
 
   <div class="hero-ipad">
-    <span class="hero-ipad-cam"></span>
     <div class="hero-ipad-screen">
       <div class="hero-ipad-logo">Dreamie Designs</div>
       <div class="hero-ipad-rule"></div>
@@ -405,6 +397,7 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
 
 <!-- ABOUT -->
 <section class="section" id="about">
+  <img class="about-backdrop" src="images/letter-illustration.png" alt="" aria-hidden="true"/>
   <div class="section-inner about-wrap">
 
     <svg class="deco-heart" style="top:-10px; left:-30px; width:30px;" viewBox="0 0 24 24" fill="none" stroke="#C75D5D" stroke-width="1"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
@@ -476,7 +469,6 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
     <div class="ipad-row">
       <div>
         <div class="ipad-frame">
-          <span class="ipad-cam"></span>
           <div class="ipad-screen">
             <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75" alt="Sullivan's Roofing demo site"/>
           </div>
@@ -490,7 +482,6 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
 
       <div>
         <div class="ipad-frame mid">
-          <span class="ipad-cam"></span>
           <div class="ipad-screen">
             <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75" alt="Master Roof Solutions demo site"/>
           </div>
@@ -504,7 +495,6 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
 
       <div>
         <div class="ipad-frame">
-          <span class="ipad-cam"></span>
           <div class="ipad-screen">
             <div class="ipad-screen-empty"><span>Yours, next?</span></div>
           </div>
@@ -529,45 +519,20 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
     </div>
 
     <div class="contact-wrap">
-      <div class="contact-card">
-        <div class="form-heart-corner form-heart-tl">
-          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
-        </div>
-        <div class="form-heart-corner form-heart-br">
-          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
-        </div>
-
-        <div class="contact-thorn-rule"></div>
-
+      <div class="contact-card-img">
         <form id="contactForm" action="https://formspree.io/f/placeholder" method="POST">
-          <div class="form-row">
-            <div class="form-field">
-              <label>Name</label>
-              <input type="text" name="name" placeholder="Your full name" required/>
-            </div>
-            <div class="form-field">
-              <label>Email</label>
-              <input type="email" name="email" placeholder="Email address" required/>
-            </div>
-          </div>
-          <div class="form-field">
-            <label>Looking for</label>
-            <select name="service">
-              <option value="" disabled selected>What are you looking for?</option>
-              <option>Web Design</option>
-              <option>Automated Chat</option>
-              <option>Automations</option>
-              <option>CRM</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label>Message</label>
-            <textarea name="message" placeholder="Tell us about your business..."></textarea>
-          </div>
-          <div class="form-submit-wrap">
-            <button type="submit" class="form-submit">Send Message</button>
-          </div>
+          <input type="text" name="name" class="ov-field ov-name" placeholder="Your Full Name" required/>
+          <input type="email" name="email" class="ov-field ov-email" placeholder="Email Address" required/>
+          <select name="service" class="ov-field ov-subject">
+            <option value="" disabled selected>Subject</option>
+            <option>Web Design</option>
+            <option>Automated Chat</option>
+            <option>Automations</option>
+            <option>CRM</option>
+            <option>Not sure yet</option>
+          </select>
+          <textarea name="message" class="ov-field ov-message" placeholder="Tell us about your business..."></textarea>
+          <button type="submit" class="ov-submit" aria-label="Send Message"></button>
         </form>
         <div class="form-ok" id="formOk">Received, with thanks. We'll write back soon.</div>
       </div>
