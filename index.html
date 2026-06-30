@@ -22,6 +22,13 @@ html { scroll-behavior: smooth; }
   --crimson-dk: #7A1F1F;
   --rose:    #C75D5D;
   --gold:    #B8924A;
+
+  /* Type scale — every serif/script size on the page derives from one of these */
+  --fs-hero:      clamp(1.6rem, 3.5vw, 2.6rem);   /* hero tagline */
+  --fs-script-lg: clamp(1.7rem, 3.6vw, 2.2rem);   /* script signature moments */
+  --fs-body:      clamp(1.1rem, 2.2vw, 1.45rem);  /* about / services prose */
+  --fs-label:     clamp(1rem, 1.8vw, 1.25rem);    /* ipad labels, smaller italic accents */
+  --fs-form:      clamp(0.7rem, 1.6vw, 1.05rem);  /* contact form fields — sized to fit the drawn image boxes */
 }
 
 body {
@@ -81,7 +88,7 @@ nav.scrolled { border-bottom-color: var(--line); }
 
 .hero-tagline {
   font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
-  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-size: var(--fs-hero);
   color: var(--ink); max-width: 640px; line-height: 1.35;
   margin: 1.2rem 0 0;
   position: relative; z-index: 1;
@@ -134,7 +141,7 @@ nav.scrolled { border-bottom-color: var(--line); }
 #about { background: var(--white); }
 .about-lines p {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  font-size: var(--fs-body);
   color: var(--ink); line-height: 1.5;
   margin-bottom: 0.9rem;
 }
@@ -143,14 +150,14 @@ nav.scrolled { border-bottom-color: var(--line); }
 .about-sign {
   margin-top: 1rem;
   font-family: 'Tangerine', cursive; font-weight: 700;
-  font-size: 2.2rem; color: var(--crimson);
+  font-size: var(--fs-script-lg); color: var(--crimson);
 }
 
 /* ── SERVICES — plain lines, no card, no icon, no separator ── */
 #services { background: var(--white); }
 .svc-lines p {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  font-size: var(--fs-body);
   color: var(--ink); line-height: 1.5;
   margin-bottom: 0.9rem;
 }
@@ -182,13 +189,13 @@ nav.scrolled { border-bottom-color: var(--line); }
   width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
   background: linear-gradient(150deg, #fdf6f4, #fae9e6);
 }
-.ipad-screen-empty span { font-family: 'Tangerine', cursive; font-weight: 700; font-size: 2rem; color: var(--crimson); }
+.ipad-screen-empty span { font-family: 'Tangerine', cursive; font-weight: 700; font-size: var(--fs-script-lg); color: var(--crimson); }
 .ipad-label { text-align: center; margin-top: 1.4rem; }
 .ipad-label-tag {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.3rem;
 }
-.ipad-label-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--ink); }
+.ipad-label-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: var(--fs-label); color: var(--ink); }
 .ipad-link {
   display: inline-block; margin-top: 0.5rem;
   font-family: 'DM Sans', sans-serif;
@@ -221,11 +228,11 @@ nav.scrolled { border-bottom-color: var(--line); }
   -webkit-appearance: none;
 }
 .ov-field::placeholder { color: transparent; }
-.ov-name   { top: 25.9%; left: 24.0%; width: 59.1%; height: 4.2%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); }
-.ov-email  { top: 34.9%; left: 24.0%; width: 59.1%; height: 4.1%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); }
-.ov-subject{ top: 43.3%; left: 24.0%; width: 59.1%; height: 4.2%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); cursor: pointer; color: transparent; }
+.ov-name   { top: 25.9%; left: 24.0%; width: 59.1%; height: 4.2%; font-size: var(--fs-form); }
+.ov-email  { top: 34.9%; left: 24.0%; width: 59.1%; height: 4.1%; font-size: var(--fs-form); }
+.ov-subject{ top: 43.3%; left: 24.0%; width: 59.1%; height: 4.2%; font-size: var(--fs-form); cursor: pointer; color: transparent; }
 .ov-subject option { font-style: normal; color: var(--ink); }
-.ov-message{ top: 52.1%; left: 14.1%; width: 69.1%; height: 17.0%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); resize: none; line-height: 1.5; padding-top: 0.3rem; padding-left: 0.5rem; }
+.ov-message{ top: 52.1%; left: 14.1%; width: 69.1%; height: 17.0%; font-size: var(--fs-form); resize: none; line-height: 1.5; padding-top: 0.3rem; padding-left: 0.5rem; }
 .ov-submit {
   position: absolute;
   top: 78.1%; left: 17.3%; width: 65.9%; height: 6.9%;
@@ -233,7 +240,7 @@ nav.scrolled { border-bottom-color: var(--line); }
 }
 .form-ok {
   display: none; margin-top: 1.6rem; text-align: center;
-  font-family: 'Tangerine', cursive; font-weight: 700; font-size: 2rem; color: var(--crimson);
+  font-family: 'Tangerine', cursive; font-weight: 700; font-size: var(--fs-script-lg); color: var(--crimson);
 }
 
 /* ── FOOTER ── */
