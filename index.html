@@ -73,33 +73,10 @@ nav.scrolled { border-bottom-color: var(--line); }
   position: relative;
   text-align: center;
 }
-.hero-parchment-wrap {
-  position: relative;
-  width: min(380px, 70vw);
-  margin-bottom: -2.5rem;
-}
-.hero-parchment-wrap img {
-  width: 100%; display: block;
-}
-.hero-parchment-overlay {
-  position: absolute;
-  top: 38%; left: 50%; transform: translate(-50%, -50%);
-  width: 78%;
-  display: flex; flex-direction: column; align-items: center;
-  text-align: center;
-}
-.hero-parchment-logo {
-  font-family: 'Tangerine', cursive; font-weight: 700;
-  font-size: clamp(2.2rem, 7vw, 3.4rem);
-  color: var(--crimson-dk);
-  line-height: 1;
-  text-shadow: 0 1px 12px rgba(255,255,255,0.6);
-}
-.hero-parchment-tagline {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(0.7rem, 2vw, 0.92rem);
-  color: var(--ink); letter-spacing: 0.01em; margin-top: 0.5rem;
-  text-shadow: 0 1px 10px rgba(255,255,255,0.7);
+.hero-heart-logo {
+  width: min(300px, 62vw);
+  display: block;
+  margin: 0 auto;
 }
 
 .hero-tagline {
@@ -299,8 +276,8 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#demos">Demos</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#demos">Demos</a></li>
   </ul>
   <a href="#contact" class="nav-btn">Write to us</a>
   <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -313,19 +290,13 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
   <button class="mobile-close" id="mobileClose">&#215;</button>
   <a href="#about" onclick="closeMobile()">About</a>
   <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#demos" onclick="closeMobile()">Demos</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#demos" onclick="closeMobile()">Demos</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-parchment-wrap">
-    <img src="images/letter-illustration.png" alt=""/>
-    <div class="hero-parchment-overlay">
-      <div class="hero-parchment-logo">Dreamie Designs</div>
-      <div class="hero-parchment-tagline">Websites written with the care of a love letter</div>
-    </div>
-  </div>
+  <img class="hero-heart-logo" src="images/hero-heart-logo.png" alt="Dreamie Designs — Where your dream meets web design, and your vision becomes reality"/>
 
   <p class="hero-tagline">Your business deserves a website that feels like <span class="accent">it was made just for you.</span></p>
   <p class="hero-sub-text">Beautiful design, gentle automation, and the quiet systems behind the scenes &mdash; all crafted with care, not copied from a template.</p>
@@ -357,6 +328,32 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
       <p>Our <span class="svc-bold">automated chat</span> answers questions and books calls for you, even while you sleep.</p>
       <p>We set up gentle <span class="svc-bold">automations</span> for follow-ups, reminders, and bookings, so nothing is ever forgotten.</p>
       <p>And we build you a simple <span class="svc-bold">CRM</span>, one tidy place to keep every customer and conversation close.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <span class="eyebrow">Contact</span>
+    <div class="contact-wrap">
+      <div class="contact-card-img">
+        <form id="contactForm" action="https://formspree.io/f/placeholder" method="POST">
+          <input type="text" name="name" class="ov-field ov-name" required/>
+          <input type="email" name="email" class="ov-field ov-email" required/>
+          <select name="service" class="ov-field ov-subject">
+            <option value="" disabled selected></option>
+            <option style="color:#2B1E1C;">Web Design</option>
+            <option style="color:#2B1E1C;">Automated Chat</option>
+            <option style="color:#2B1E1C;">Automations</option>
+            <option style="color:#2B1E1C;">CRM</option>
+            <option style="color:#2B1E1C;">Not sure yet</option>
+          </select>
+          <textarea name="message" class="ov-field ov-message"></textarea>
+          <button type="submit" class="ov-submit" aria-label="Send Message"></button>
+        </form>
+        <div class="form-ok" id="formOk">Received, with thanks. We'll write back soon.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -412,32 +409,6 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="section" id="contact">
-  <div class="section-inner">
-    <span class="eyebrow">Contact</span>
-    <div class="contact-wrap">
-      <div class="contact-card-img">
-        <form id="contactForm" action="https://formspree.io/f/placeholder" method="POST">
-          <input type="text" name="name" class="ov-field ov-name" required/>
-          <input type="email" name="email" class="ov-field ov-email" required/>
-          <select name="service" class="ov-field ov-subject">
-            <option value="" disabled selected></option>
-            <option style="color:#2B1E1C;">Web Design</option>
-            <option style="color:#2B1E1C;">Automated Chat</option>
-            <option style="color:#2B1E1C;">Automations</option>
-            <option style="color:#2B1E1C;">CRM</option>
-            <option style="color:#2B1E1C;">Not sure yet</option>
-          </select>
-          <textarea name="message" class="ov-field ov-message"></textarea>
-          <button type="submit" class="ov-submit" aria-label="Send Message"></button>
-        </form>
-        <div class="form-ok" id="formOk">Received, with thanks. We'll write back soon.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -445,8 +416,8 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
     <ul class="footer-nav">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#demos">Demos</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="#demos">Demos</a></li>
     </ul>
   </div>
   <div class="footer-bottom">
