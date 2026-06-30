@@ -27,14 +27,13 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--white);
   color: var(--ink);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  line-height: 1.7;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  line-height: 1.75;
   overflow-x: hidden;
 }
 
 .script { font-family: 'Tangerine', cursive; font-weight: 700; }
-.serif  { font-family: 'Cormorant Garamond', serif; }
 
 /* ── NAV ── */
 nav {
@@ -60,64 +59,59 @@ nav.scrolled { border-bottom-color: var(--line); }
   font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--white); background: var(--crimson);
   text-decoration: none; padding: 0.6rem 1.4rem; border-radius: 30px;
+  font-family: 'DM Sans', sans-serif;
   transition: background 0.2s;
 }
 .nav-btn:hover { background: var(--crimson-dk); }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 2px; }
 .hamburger span { display: block; width: 22px; height: 1px; background: var(--ink); }
 
-/* ── BUTTERFLY + HEART DECOR (inline SVG, reusable) ── */
-.deco-butterfly { position: absolute; pointer-events: none; opacity: 0.85; }
-.deco-heart { position: absolute; pointer-events: none; opacity: 0.7; }
-
 /* ── HERO ── */
 #hero {
-  min-height: 100vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 9rem 2rem 4rem;
+  padding: 8rem 2rem 5rem;
   position: relative;
   text-align: center;
-  background: linear-gradient(180deg, var(--blush) 0%, var(--white) 70%);
 }
-.hero-ipad {
-  width: min(640px, 88vw);
-  aspect-ratio: 559/362;
-  background-image: url('images/ipad-frame.jpeg');
-  background-size: 100% 100%;
+.hero-parchment-wrap {
   position: relative;
-  margin-bottom: 3rem;
-  filter: drop-shadow(0 25px 50px rgba(122,31,31,0.18));
+  width: min(380px, 70vw);
+  margin-bottom: -2.5rem;
 }
-.hero-ipad-screen {
+.hero-parchment-wrap img {
+  width: 100%; display: block;
+}
+.hero-parchment-overlay {
   position: absolute;
-  /* screen bounds measured from ipad-frame.jpeg (559x362) */
-  top: 8.5%; left: 10%; right: 10%; bottom: 8.5%;
-  border-radius: 4px; overflow: hidden;
-  background: linear-gradient(160deg, #fff 0%, #fdf6f4 55%, #fae9e6 100%);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 1.5rem;
+  top: 38%; left: 50%; transform: translate(-50%, -50%);
+  width: 78%;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
 }
-.hero-ipad-logo {
+.hero-parchment-logo {
   font-family: 'Tangerine', cursive; font-weight: 700;
-  font-size: clamp(3rem, 9vw, 5rem);
-  color: var(--crimson);
+  font-size: clamp(2.2rem, 7vw, 3.4rem);
+  color: var(--crimson-dk);
   line-height: 1;
+  text-shadow: 0 1px 12px rgba(255,255,255,0.6);
 }
-.hero-ipad-sub {
+.hero-parchment-tagline {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(0.85rem, 2vw, 1.15rem);
-  color: var(--ink-soft); letter-spacing: 0.02em; margin-top: 0.6rem;
+  font-size: clamp(0.7rem, 2vw, 0.92rem);
+  color: var(--ink); letter-spacing: 0.01em; margin-top: 0.5rem;
+  text-shadow: 0 1px 10px rgba(255,255,255,0.7);
 }
-.hero-ipad-rule { width: 50px; height: 1px; background: var(--gold); margin: 0.9rem 0; }
 
 .hero-tagline {
   font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
   font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-  color: var(--ink); max-width: 640px; line-height: 1.35;
-  margin-bottom: 1.6rem;
+  color: var(--ink); max-width: 640px; line-height: 1.4;
+  margin: 3rem 0 1.6rem;
+  position: relative; z-index: 1;
 }
 .hero-tagline .accent { color: var(--crimson); font-weight: 500; }
 .hero-sub-text {
+  font-family: 'DM Sans', sans-serif; font-weight: 300;
   font-size: 0.88rem; color: var(--ink-soft); max-width: 440px;
   margin-bottom: 2.2rem;
 }
@@ -125,60 +119,38 @@ nav.scrolled { border-bottom-color: var(--line); }
 .btn-crimson {
   display: inline-block; background: var(--crimson); color: var(--white);
   text-decoration: none; padding: 0.85rem 2rem; border-radius: 30px;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
   transition: background 0.2s, transform 0.2s;
 }
 .btn-crimson:hover { background: var(--crimson-dk); transform: translateY(-1px); }
 .btn-outline-rose {
   display: inline-block; color: var(--crimson); text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
   border: 1px solid var(--line); padding: 0.83rem 1.8rem; border-radius: 30px;
   transition: border-color 0.2s, background 0.2s;
 }
 .btn-outline-rose:hover { border-color: var(--crimson); background: var(--blush); }
 
-/* ── DIVIDER ── */
-.divider {
-  display: flex; align-items: center; justify-content: center; gap: 1rem;
-  padding: 0 2rem; margin: 0 auto; max-width: 280px;
-  position: relative;
-}
-.divider-line { flex: 1; height: 1px; background: var(--line); }
-
 /* ── SECTIONS ── */
-.section { padding: 6rem 3rem; position: relative; }
-.section-inner { max-width: 1040px; margin: 0 auto; position: relative; }
+.section { padding: 5.5rem 3rem; }
+.section-inner { max-width: 760px; margin: 0 auto; text-align: center; }
 .eyebrow {
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--rose); margin-bottom: 1rem; display: block;
+  color: var(--rose); margin-bottom: 1.4rem; display: block;
 }
-.section-title {
-  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.2; color: var(--ink);
-}
-.section-header { text-align: center; margin-bottom: 3.5rem; }
-.body-text { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.95; }
 
-/* ── ABOUT — handwritten sentences ── */
-#about { background: var(--white); position: relative; overflow: hidden; }
-.about-backdrop {
-  position: absolute;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 480px; max-width: 90vw;
-  opacity: 0.16;
-  pointer-events: none;
-  z-index: 0;
-}
-.about-wrap { position: relative; z-index: 1; }
-.about-wrap { max-width: 680px; margin: 0 auto; text-align: center; position: relative; }
+/* ── ABOUT — plain lines, no card ── */
+#about { background: var(--white); }
 .about-lines p {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
-  color: var(--ink); line-height: 1.85;
-  margin-bottom: 1.3rem;
+  font-size: clamp(1.15rem, 2.3vw, 1.55rem);
+  color: var(--ink); line-height: 1.9;
+  margin-bottom: 1.4rem;
 }
-.about-lines p .accent { color: var(--crimson); font-weight: 500; font-style: normal; }
+.about-lines p .accent { color: var(--crimson); font-weight: 600; font-style: normal; }
 .about-lines p:last-child { margin-bottom: 0; }
 .about-sign {
   margin-top: 2.2rem;
@@ -186,40 +158,32 @@ nav.scrolled { border-bottom-color: var(--line); }
   font-size: 2.2rem; color: var(--crimson);
 }
 
-/* ── SERVICES — written as sentences, no cards ── */
-#services { background: var(--blush); }
-.svc-list { max-width: 740px; margin: 3rem auto 0; }
-.svc-row {
-  display: flex; align-items: baseline; gap: 1.2rem;
-  padding: 1.8rem 0;
-  border-bottom: 1px solid var(--line);
-}
-.svc-row:first-child { border-top: 1px solid var(--line); }
-.svc-icon-wrap {
-  flex-shrink: 0; width: 30px; display: flex; justify-content: center; padding-top: 4px;
-}
-.svc-icon-wrap svg { width: 22px; height: 22px; stroke: var(--crimson); fill: none; stroke-width: 1.3; }
-.svc-sentence {
+/* ── SERVICES — plain lines, no card, no icon, no separator ── */
+#services { background: var(--white); }
+.svc-lines p {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  color: var(--ink); line-height: 1.6;
+  font-size: clamp(1.15rem, 2.3vw, 1.55rem);
+  color: var(--ink); line-height: 1.95;
+  margin-bottom: 1.5rem;
 }
-.svc-sentence .svc-bold { font-weight: 600; font-style: normal; color: var(--crimson); }
+.svc-lines p:last-child { margin-bottom: 0; }
+.svc-lines .svc-bold { font-weight: 600; font-style: normal; color: var(--crimson); }
 
-/* ── DEMO SECTION — 3 iPads ── */
+/* ── DEMOS — 3 iPads stacked vertically, full width ── */
 #demos { background: var(--white); }
-.ipad-row { display: flex; justify-content: center; align-items: flex-end; gap: 2.6rem; flex-wrap: wrap; margin-top: 3rem; }
+.ipad-stack {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 4rem; margin-top: 3rem;
+}
+.ipad-block { width: 100%; max-width: 760px; }
 .ipad-frame {
-  width: 300px;
+  width: 100%;
   aspect-ratio: 559/362;
   background-image: url('images/ipad-frame.jpeg');
   background-size: 100% 100%;
   position: relative;
-  transition: transform 0.4s ease;
-  filter: drop-shadow(0 20px 40px rgba(122,31,31,0.16));
+  filter: drop-shadow(0 25px 50px rgba(122,31,31,0.14));
 }
-.ipad-frame:hover { transform: translateY(-6px); }
-.ipad-frame.mid { width: 340px; margin-bottom: 1.2rem; }
 .ipad-screen {
   position: absolute;
   top: 8.5%; left: 10%; right: 10%; bottom: 8.5%;
@@ -231,11 +195,15 @@ nav.scrolled { border-bottom-color: var(--line); }
   background: linear-gradient(150deg, #fdf6f4, #fae9e6);
 }
 .ipad-screen-empty span { font-family: 'Tangerine', cursive; font-weight: 700; font-size: 2rem; color: var(--crimson); }
-.ipad-label { text-align: center; margin-top: 1.3rem; }
-.ipad-label-tag { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.3rem; }
-.ipad-label-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--ink); }
+.ipad-label { text-align: center; margin-top: 1.4rem; }
+.ipad-label-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.3rem;
+}
+.ipad-label-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--ink); }
 .ipad-link {
   display: inline-block; margin-top: 0.5rem;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--ink-soft); text-decoration: none;
   border-bottom: 1px solid var(--line);
@@ -243,8 +211,8 @@ nav.scrolled { border-bottom-color: var(--line); }
 }
 .ipad-link:hover { color: var(--crimson); border-color: var(--crimson); }
 
-/* ── CONTACT — real image overlay form ── */
-#contact { background: var(--blush); }
+/* ── CONTACT — real image overlay form, no added text ── */
+#contact { background: var(--white); }
 .contact-wrap { max-width: 480px; margin: 3rem auto 0; }
 .contact-card-img {
   position: relative;
@@ -264,11 +232,10 @@ nav.scrolled { border-bottom-color: var(--line); }
   color: var(--ink);
   -webkit-appearance: none;
 }
-.ov-field::placeholder { color: #B89A8F; font-style: italic; opacity: 0.85; }
-/* coordinates measured as % against 865x1024 source image */
+.ov-field::placeholder { color: transparent; }
 .ov-name   { top: 25.0%; left: 23.5%; width: 62%; height: 5.2%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); }
 .ov-email  { top: 34.0%; left: 23.5%; width: 62%; height: 5.2%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); }
-.ov-subject{ top: 43.0%; left: 23.5%; width: 62%; height: 5.2%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); cursor: pointer; }
+.ov-subject{ top: 43.0%; left: 23.5%; width: 62%; height: 5.2%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); cursor: pointer; color: transparent; }
 .ov-subject option { font-style: normal; color: var(--ink); }
 .ov-message{ top: 51.5%; left: 13.5%; width: 73%; height: 19%; font-size: clamp(0.7rem, 1.6vw, 1.05rem); resize: none; line-height: 1.5; padding-top: 0.3rem; }
 .ov-submit {
@@ -291,11 +258,11 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
 .footer-brand { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: rgba(255,247,245,0.7); }
 .footer-brand .script { color: #D89A9A; font-size: 1.7rem; }
 .footer-nav { display: flex; gap: 1.8rem; list-style: none; flex-wrap: wrap; }
-.footer-nav a { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,247,245,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-nav a { font-family: 'DM Sans', sans-serif; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,247,245,0.35); text-decoration: none; transition: color 0.2s; }
 .footer-nav a:hover { color: #D89A9A; }
 .footer-bottom { margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-.footer-copy { font-size: 0.6rem; letter-spacing: 0.05em; color: rgba(255,247,245,0.2); }
-.footer-email { font-size: 0.68rem; color: rgba(255,247,245,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-copy { font-family: 'DM Sans', sans-serif; font-size: 0.6rem; letter-spacing: 0.05em; color: rgba(255,247,245,0.2); }
+.footer-email { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; color: rgba(255,247,245,0.35); text-decoration: none; transition: color 0.2s; }
 .footer-email:hover { color: #D89A9A; }
 
 /* ── MOBILE OVERLAY ── */
@@ -314,20 +281,14 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
   .hamburger { display: flex; }
   .section { padding: 4.5rem 1.5rem; }
   #hero { padding: 7rem 1.4rem 3rem; }
-  .ipad-frame.mid { width: 280px; margin-bottom: 0; }
-  .deco-butterfly, .deco-heart { display: none; }
   .footer-top { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 560px) {
   #hero { padding: 6.5rem 1.1rem 2.5rem; }
   .section { padding: 3.5rem 1.1rem; }
   nav { padding: 0.9rem 1.1rem; }
-  .form-row { grid-template-columns: 1fr; }
-  .contact-card { padding: 2.2rem 1.5rem 2rem; }
-  .ipad-frame, .ipad-frame.mid { width: 100%; max-width: 320px; }
   .footer-top, .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
-@media (prefers-reduced-motion: reduce) { .ipad-frame { transition: none; } }
 </style>
 </head>
 <body>
@@ -358,28 +319,11 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
 
 <!-- HERO -->
 <section id="hero">
-
-  <!-- decorative butterflies -->
-  <svg class="deco-butterfly" style="top:14%; left:6%; width:46px;" viewBox="0 0 64 64">
-    <g fill="none" stroke="#C75D5D" stroke-width="1.2">
-      <path d="M32 32 C18 14, 4 18, 8 32 C4 46, 18 50, 32 32 Z" fill="#F7D8D4"/>
-      <path d="M32 32 C46 14, 60 18, 56 32 C60 46, 46 50, 32 32 Z" fill="#F2C2BD"/>
-      <line x1="32" y1="22" x2="32" y2="44"/>
-    </g>
-  </svg>
-  <svg class="deco-butterfly" style="top:20%; right:8%; width:36px;" viewBox="0 0 64 64">
-    <g fill="none" stroke="#9E2B2B" stroke-width="1.2">
-      <path d="M32 32 C18 14, 4 18, 8 32 C4 46, 18 50, 32 32 Z" fill="#F2C2BD"/>
-      <path d="M32 32 C46 14, 60 18, 56 32 C60 46, 46 50, 32 32 Z" fill="#F7D8D4"/>
-      <line x1="32" y1="22" x2="32" y2="44"/>
-    </g>
-  </svg>
-
-  <div class="hero-ipad">
-    <div class="hero-ipad-screen">
-      <div class="hero-ipad-logo">Dreamie Designs</div>
-      <div class="hero-ipad-rule"></div>
-      <div class="hero-ipad-sub">Websites written with the same care as a love letter</div>
+  <div class="hero-parchment-wrap">
+    <img src="images/letter-illustration.png" alt=""/>
+    <div class="hero-parchment-overlay">
+      <div class="hero-parchment-logo">Dreamie Designs</div>
+      <div class="hero-parchment-tagline">Websites written with the care of a love letter</div>
     </div>
   </div>
 
@@ -391,68 +335,28 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
   </div>
 </section>
 
-<div class="divider"><span class="divider-line"></span>
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C75D5D" stroke-width="1.3"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
-<span class="divider-line"></span></div>
-
 <!-- ABOUT -->
 <section class="section" id="about">
-  <img class="about-backdrop" src="images/letter-illustration.png" alt="" aria-hidden="true"/>
-  <div class="section-inner about-wrap">
-
-    <svg class="deco-heart" style="top:-10px; left:-30px; width:30px;" viewBox="0 0 24 24" fill="none" stroke="#C75D5D" stroke-width="1"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
-
+  <div class="section-inner">
     <span class="eyebrow">About</span>
-    <h2 class="section-title" style="margin-bottom:2rem;">A little note, from us to you.</h2>
     <div class="about-lines">
       <p>We started Dreamie Designs because too many good businesses are let down by websites that feel like an afterthought.</p>
-      <p>We believe a website is the <span class="accent">first impression</span> most people will ever have of you &mdash; so we write every line of it the way you'd write to someone who matters.</p>
+      <p>We believe a website is the <span class="accent">first impression</span> most people will ever have of you, so we write every line of it the way you'd write to someone who matters.</p>
       <p>Behind the romance sits something practical too: gentle automation, thoughtful systems, and a little bit of magic that keeps everything running while you focus on what you do best.</p>
     </div>
     <p class="about-sign">With love, Dreamie Designs</p>
   </div>
 </section>
 
-<div class="divider"><span class="divider-line"></span>
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C75D5D" stroke-width="1.3"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
-<span class="divider-line"></span></div>
-
 <!-- SERVICES -->
 <section class="section" id="services">
   <div class="section-inner">
-    <div class="section-header">
-      <span class="eyebrow">Services</span>
-      <h2 class="section-title">A few ways we can help.</h2>
-    </div>
-
-    <div class="svc-list">
-      <div class="svc-row">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c.251.023.501.05.75.082m0 0a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.186l.75-.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.392 0-4.744-.175-7.135-.514-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
-        </div>
-        <p class="svc-sentence">We design <span class="svc-bold">beautiful, custom websites</span> built around your business, not a template with your logo dropped in.</p>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
-        </div>
-        <p class="svc-sentence">Our <span class="svc-bold">automated chat</span> answers questions and books calls for you, even while you sleep.</p>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12"/></svg>
-        </div>
-        <p class="svc-sentence">We set up <span class="svc-bold">gentle automations</span> for follow-ups, reminders, and bookings, so nothing is ever forgotten.</p>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-        </div>
-        <p class="svc-sentence">And we build you a simple <span class="svc-bold">CRM</span> &mdash; one tidy place to keep every customer and conversation close.</p>
-      </div>
+    <span class="eyebrow">Services</span>
+    <div class="svc-lines">
+      <p>We design <span class="svc-bold">beautiful, custom websites</span> built around your business, not a template with your logo dropped in.</p>
+      <p>Our <span class="svc-bold">automated chat</span> answers questions and books calls for you, even while you sleep.</p>
+      <p>We set up gentle <span class="svc-bold">automations</span> for follow-ups, reminders, and bookings, so nothing is ever forgotten.</p>
+      <p>And we build you a simple <span class="svc-bold">CRM</span>, one tidy place to keep every customer and conversation close.</p>
     </div>
   </div>
 </section>
@@ -460,50 +364,49 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
 <!-- DEMOS -->
 <section class="section" id="demos">
   <div class="section-inner">
-    <div class="section-header">
-      <span class="eyebrow">Demos</span>
-      <h2 class="section-title">A few we're proud of.</h2>
-      <p class="body-text" style="max-width:480px; margin:1rem auto 0;">Live websites, built and shipped for real businesses.</p>
+    <span class="eyebrow">Demos</span>
+    <div class="about-lines" style="margin-bottom:0;">
+      <p>A few websites we're proud of.</p>
+    </div>
+  </div>
+
+  <div class="ipad-stack">
+    <div class="ipad-block">
+      <div class="ipad-frame">
+        <div class="ipad-screen">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=75" alt="Sullivan's Roofing demo site"/>
+        </div>
+      </div>
+      <div class="ipad-label">
+        <div class="ipad-label-tag">Roofing &middot; Harrow</div>
+        <div class="ipad-label-name">Sullivan's Roofing</div>
+        <a href="https://selma123x.github.io/sullivan-roofing/" target="_blank" class="ipad-link">View live site</a>
+      </div>
     </div>
 
-    <div class="ipad-row">
-      <div>
-        <div class="ipad-frame">
-          <div class="ipad-screen">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75" alt="Sullivan's Roofing demo site"/>
-          </div>
-        </div>
-        <div class="ipad-label">
-          <div class="ipad-label-tag">Roofing &middot; Harrow</div>
-          <div class="ipad-label-name">Sullivan's Roofing</div>
-          <a href="https://selma123x.github.io/sullivan-roofing/" target="_blank" class="ipad-link">View live site</a>
+    <div class="ipad-block">
+      <div class="ipad-frame">
+        <div class="ipad-screen">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=75" alt="Master Roof Solutions demo site"/>
         </div>
       </div>
+      <div class="ipad-label">
+        <div class="ipad-label-tag">Flat Roofing &middot; London</div>
+        <div class="ipad-label-name">Master Roof Solutions</div>
+        <a href="https://selma123x.github.io/msr-v2/" target="_blank" class="ipad-link">View live site</a>
+      </div>
+    </div>
 
-      <div>
-        <div class="ipad-frame mid">
-          <div class="ipad-screen">
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75" alt="Master Roof Solutions demo site"/>
-          </div>
-        </div>
-        <div class="ipad-label">
-          <div class="ipad-label-tag">Flat Roofing &middot; London</div>
-          <div class="ipad-label-name">Master Roof Solutions</div>
-          <a href="https://selma123x.github.io/msr-v2/" target="_blank" class="ipad-link">View live site</a>
+    <div class="ipad-block">
+      <div class="ipad-frame">
+        <div class="ipad-screen">
+          <div class="ipad-screen-empty"><span>Yours, next?</span></div>
         </div>
       </div>
-
-      <div>
-        <div class="ipad-frame">
-          <div class="ipad-screen">
-            <div class="ipad-screen-empty"><span>Yours, next?</span></div>
-          </div>
-        </div>
-        <div class="ipad-label">
-          <div class="ipad-label-tag">Coming soon</div>
-          <div class="ipad-label-name">Your business</div>
-          <a href="#contact" class="ipad-link">Start a project</a>
-        </div>
+      <div class="ipad-label">
+        <div class="ipad-label-tag">Coming soon</div>
+        <div class="ipad-label-name">Your business</div>
+        <a href="#contact" class="ipad-link">Start a project</a>
       </div>
     </div>
   </div>
@@ -512,26 +415,21 @@ footer { background: var(--ink); padding: 3rem 3rem 2rem; }
 <!-- CONTACT -->
 <section class="section" id="contact">
   <div class="section-inner">
-    <div class="section-header">
-      <span class="eyebrow">Contact</span>
-      <h2 class="section-title">Write to us.</h2>
-      <p class="body-text" style="max-width:440px; margin:1rem auto 0;">Tell us a little about your business &mdash; we'll write back personally, not with a template reply.</p>
-    </div>
-
+    <span class="eyebrow">Contact</span>
     <div class="contact-wrap">
       <div class="contact-card-img">
         <form id="contactForm" action="https://formspree.io/f/placeholder" method="POST">
-          <input type="text" name="name" class="ov-field ov-name" placeholder="Your Full Name" required/>
-          <input type="email" name="email" class="ov-field ov-email" placeholder="Email Address" required/>
+          <input type="text" name="name" class="ov-field ov-name" required/>
+          <input type="email" name="email" class="ov-field ov-email" required/>
           <select name="service" class="ov-field ov-subject">
-            <option value="" disabled selected>Subject</option>
-            <option>Web Design</option>
-            <option>Automated Chat</option>
-            <option>Automations</option>
-            <option>CRM</option>
-            <option>Not sure yet</option>
+            <option value="" disabled selected></option>
+            <option style="color:#2B1E1C;">Web Design</option>
+            <option style="color:#2B1E1C;">Automated Chat</option>
+            <option style="color:#2B1E1C;">Automations</option>
+            <option style="color:#2B1E1C;">CRM</option>
+            <option style="color:#2B1E1C;">Not sure yet</option>
           </select>
-          <textarea name="message" class="ov-field ov-message" placeholder="Tell us about your business..."></textarea>
+          <textarea name="message" class="ov-field ov-message"></textarea>
           <button type="submit" class="ov-submit" aria-label="Send Message"></button>
         </form>
         <div class="form-ok" id="formOk">Received, with thanks. We'll write back soon.</div>
@@ -571,7 +469,7 @@ const form = document.getElementById('contactForm');
 form.addEventListener('submit', async e => {
   e.preventDefault();
   const btn = form.querySelector('button');
-  btn.textContent = 'Sending...'; btn.disabled = true;
+  btn.disabled = true;
   try {
     await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
   } catch (err) {}
