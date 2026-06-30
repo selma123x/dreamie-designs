@@ -3,443 +3,427 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Dreamie Designs — Beautiful websites that actually work</title>
-<meta name="description" content="Dreamie Designs builds beautiful, considered websites for businesses that care how they show up online."/>
+<title>Dreamie Designs — A Love Letter to Your Business</title>
+<meta name="description" content="Dreamie Designs builds beautiful websites, automated chat, automations and CRM systems for businesses that care how they show up online."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Dancing+Script:wght@500;600;700&family=DM+Sans:wght@300;400;500&family=Courier+Prime&display=swap" rel="stylesheet"/>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --cream: #F9F8F5;
-  --warm:  #F2EFE9;
-  --stone: #E0DDD7;
-  --ink:   #1C1C1A;
-  --mid:   #8A8A87;
-  --sage:  #7A9E7E;
+  --paper:   #F6F0E2;
+  --paper-2: #EFE6D2;
+  --line:    #DCD0B4;
+  --ink:     #2B2620;
+  --ink-soft:#5C5346;
+  --wax:     #B23B3B;
+  --wax-dk:  #8E2C2C;
+  --gold:    #B8924A;
+  --gold-lt: #D4B873;
 }
 
 body {
-  background: var(--cream);
+  background: var(--paper);
   color: var(--ink);
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: hidden;
 }
 
+/* subtle paper texture via layered radial gradients */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(184,146,74,0.05) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(178,59,59,0.04) 0%, transparent 50%);
+}
+
+.script { font-family: 'Dancing Script', cursive; }
+.serif  { font-family: 'Cormorant Garamond', serif; }
+.mono   { font-family: 'Courier Prime', monospace; }
+
 /* ── NAV ── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1.4rem 3rem;
-  background: rgba(249,248,245,0.92);
+  padding: 1.3rem 3rem;
+  background: rgba(246,240,226,0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s;
 }
-nav.scrolled { border-bottom-color: var(--stone); }
-.nav-logo {
-  font-size: 0.9rem; font-weight: 400; letter-spacing: 0.02em;
-  color: var(--ink); text-decoration: none;
-}
-.nav-logo em {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 400; font-size: 1.05rem;
-}
+nav.scrolled { border-bottom-color: var(--line); }
+.nav-logo { font-size: 1.4rem; color: var(--ink); text-decoration: none; }
+.nav-logo .script { color: var(--wax); }
 .nav-links { display: flex; gap: 2.2rem; list-style: none; }
 .nav-links a {
-  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--mid); text-decoration: none; transition: color 0.2s;
+  font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-soft); text-decoration: none; transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover { color: var(--wax); }
 .nav-btn {
-  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--cream); background: var(--ink);
-  text-decoration: none; padding: 0.6rem 1.4rem;
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--paper); background: var(--wax);
+  text-decoration: none; padding: 0.6rem 1.4rem; border-radius: 2px;
   transition: background 0.2s;
 }
-.nav-btn:hover { background: var(--sage); }
-.hamburger {
-  display: none; flex-direction: column; gap: 5px;
-  cursor: pointer; background: none; border: none; padding: 2px;
-}
-.hamburger span { display: block; width: 22px; height: 1px; background: var(--ink); transition: 0.3s; }
+.nav-btn:hover { background: var(--wax-dk); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 2px; }
+.hamburger span { display: block; width: 22px; height: 1px; background: var(--ink); }
 
-/* ── HERO ── */
+/* ── HERO — the envelope/letter ── */
 #hero {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 0 3rem;
-  padding-top: 80px;
-  gap: 4rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 9rem 2rem 5rem;
+  position: relative; z-index: 1;
+  text-align: center;
 }
-.hero-left { display: flex; flex-direction: column; }
-.hero-eyebrow {
-  font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--sage); margin-bottom: 1.8rem;
-  display: flex; align-items: center; gap: 0.8rem;
+.wax-seal {
+  width: 78px; height: 78px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #C84747, var(--wax-dk) 70%);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px rgba(142,44,44,0.35), inset 0 -4px 8px rgba(0,0,0,0.25), inset 0 3px 6px rgba(255,255,255,0.15);
+  margin-bottom: 2rem;
+  position: relative;
 }
-.hero-eyebrow::before {
-  content: ''; display: block; width: 28px; height: 1px; background: var(--sage);
+.wax-seal::after {
+  content: '';
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(142,44,44,0.25);
+}
+.wax-seal-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 1.7rem; color: rgba(255,255,255,0.92);
+}
+.hero-dateline {
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.6rem;
+}
+.hero-salutation {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  color: var(--ink-soft); margin-bottom: 1.2rem;
 }
 .hero-headline {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic; font-weight: 300;
-  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
-  line-height: 1.1; color: var(--ink); letter-spacing: -0.01em;
-  margin-bottom: 2rem;
+  font-size: clamp(2.6rem, 6.5vw, 5.4rem);
+  line-height: 1.12; color: var(--ink); max-width: 850px;
+  margin-bottom: 1.8rem;
 }
+.hero-headline .accent { color: var(--wax); font-weight: 500; }
 .hero-sub {
-  font-size: 0.9rem; color: var(--mid); line-height: 1.85;
-  max-width: 380px; margin-bottom: 2.5rem;
+  font-size: 0.92rem; color: var(--ink-soft); max-width: 460px;
+  line-height: 1.9; margin-bottom: 2.4rem;
 }
-.hero-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
-.btn-primary {
-  display: inline-block; background: var(--ink); color: var(--cream);
-  text-decoration: none; padding: 0.8rem 1.8rem;
-  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-  transition: background 0.2s;
+.hero-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+.btn-wax {
+  display: inline-block; background: var(--wax); color: var(--paper);
+  text-decoration: none; padding: 0.85rem 2rem; border-radius: 2px;
+  font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase;
+  transition: background 0.2s, transform 0.2s;
 }
-.btn-primary:hover { background: var(--sage); }
-.btn-ghost {
+.btn-wax:hover { background: var(--wax-dk); transform: translateY(-1px); }
+.btn-line {
   display: inline-block; color: var(--ink); text-decoration: none;
-  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-  border-bottom: 1px solid var(--stone); padding-bottom: 2px;
-  transition: border-color 0.2s, color 0.2s;
+  font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase;
+  border-bottom: 1px solid var(--gold); padding-bottom: 3px;
+  transition: color 0.2s, border-color 0.2s;
 }
-.btn-ghost:hover { border-color: var(--sage); color: var(--sage); }
-
-/* Hero right — image collage */
-.hero-right {
-  position: relative;
-  height: 540px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-img-main {
-  width: 78%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: 3px;
-  display: block;
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-55%, -50%);
-  filter: brightness(0.95);
-}
-.hero-img-accent {
-  width: 46%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  border-radius: 3px;
-  display: block;
-  position: absolute;
-  bottom: 8%; right: 2%;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-}
-.hero-badge {
-  position: absolute;
-  top: 12%; left: 2%;
-  background: var(--ink);
-  color: var(--cream);
-  padding: 1rem 1.2rem;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  line-height: 1.6;
-  border-radius: 2px;
-  z-index: 2;
-}
-.hero-badge strong {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 300;
-  font-size: 1.6rem; letter-spacing: 0;
-  line-height: 1;
-  margin-bottom: 0.3rem;
+.btn-line:hover { color: var(--wax); border-color: var(--wax); }
+.hero-signoff {
+  margin-top: 3.5rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem; color: var(--ink-soft);
 }
 
-/* ── TICKER ── */
-.ticker {
-  background: var(--ink);
-  padding: 0.95rem 0;
-  overflow: hidden; white-space: nowrap;
+/* ── TORN DIVIDER ── */
+.tear-divider {
+  height: 28px;
+  background: var(--paper);
+  position: relative; z-index: 1;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='14' viewBox='0 0 40 14'%3E%3Cpath d='M0 14 L5 2 L10 12 L15 1 L20 13 L25 3 L30 11 L35 2 L40 14 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='14' viewBox='0 0 40 14'%3E%3Cpath d='M0 14 L5 2 L10 12 L15 1 L20 13 L25 3 L30 11 L35 2 L40 14 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 40px 14px;
+  mask-size: 40px 14px;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
 }
-.ticker-track {
-  display: inline-block;
-  animation: ticker 28s linear infinite;
-}
-.ticker-item {
-  display: inline-block;
-  font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: rgba(255,255,255,0.28);
-  padding: 0 2.5rem;
-}
-.ticker-item em { color: var(--sage); font-style: normal; margin-right: 2.5rem; }
-@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.tear-divider.flip { transform: rotate(180deg); }
 
-/* ── SECTIONS SHARED ── */
-.section { padding: 7rem 3rem; }
-.section-inner { max-width: 1060px; margin: 0 auto; }
+/* ── SECTIONS ── */
+.section { padding: 6.5rem 3rem; position: relative; z-index: 1; }
+.section-inner { max-width: 1080px; margin: 0 auto; }
 .eyebrow {
-  font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--sage); display: block; margin-bottom: 1.4rem;
+  font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--wax); display: flex; align-items: center; gap: 0.7rem;
+  margin-bottom: 1.4rem;
 }
+.eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); }
 .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic; font-weight: 300;
-  font-size: clamp(2rem, 3.8vw, 3.4rem);
-  line-height: 1.15; color: var(--ink);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.18; color: var(--ink);
 }
-.body-text {
-  font-size: 0.87rem; color: var(--mid); line-height: 1.9;
+.body-text { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.9; }
+
+/* ── ABOUT / LETTER BODY ── */
+#about { background: var(--paper-2); }
+.letter-card {
+  max-width: 720px; margin: 3rem auto 0;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 3.5rem 3rem;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(43,38,32,0.06);
+}
+.letter-card::before {
+  content: '';
+  position: absolute; top: 14px; left: 14px; right: 14px; bottom: 14px;
+  border: 1px solid var(--line);
+  pointer-events: none;
+}
+.letter-greeting {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 1.5rem; color: var(--wax);
+  margin-bottom: 1.4rem;
+}
+.letter-body p {
+  font-size: 0.92rem; color: var(--ink-soft); line-height: 1.95;
+  margin-bottom: 1.1rem;
+}
+.letter-body p:last-child { margin-bottom: 0; }
+.letter-signature {
+  margin-top: 2rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.7rem; color: var(--ink);
+  text-align: right;
 }
 
-/* ── ABOUT ── */
-#about { background: var(--warm); }
-.about-layout {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 6rem; align-items: center; margin-top: 3rem;
+/* ── SERVICES — written as promises ── */
+#services { background: var(--paper); }
+.svc-header { text-align: center; margin-bottom: 3.5rem; }
+.svc-header .eyebrow { justify-content: center; }
+.svc-header .eyebrow::before { display: none; }
+.svc-header .section-title { max-width: 600px; margin: 0 auto; }
+.svc-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px; background: var(--line);
+  border: 1px solid var(--line);
 }
-.about-img-wrap { position: relative; }
-.about-img {
-  width: 100%; aspect-ratio: 3/4;
-  object-fit: cover; border-radius: 3px; display: block;
-  filter: brightness(0.96) saturate(0.9);
+.svc-card {
+  background: var(--paper); padding: 2.6rem 2.4rem;
+  transition: background 0.25s;
+  position: relative;
 }
-.about-caption {
-  position: absolute; bottom: -1.2rem; right: -1.2rem;
-  background: var(--cream);
-  padding: 1rem 1.3rem;
-  font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--mid); border-radius: 2px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  line-height: 1.7;
-}
-.about-content { display: flex; flex-direction: column; gap: 1.2rem; }
-.about-content .section-title { margin-bottom: 0.5rem; }
-.about-stats {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0; margin-top: 1rem;
-  border-top: 1px solid var(--stone);
-}
-.stat { padding: 1.4rem 0; border-bottom: 1px solid var(--stone); }
-.stat:nth-child(odd) { border-right: 1px solid var(--stone); padding-right: 1.5rem; }
-.stat:nth-child(even) { padding-left: 1.5rem; }
-.stat-n {
+.svc-card:hover { background: var(--paper-2); }
+.svc-roman {
   font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 300;
-  font-size: 2.2rem; color: var(--ink); line-height: 1;
-}
-.stat-l {
-  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--mid); margin-top: 0.3rem;
-}
-
-/* ── SERVICES ── */
-#services { background: var(--cream); }
-.services-layout {
-  display: grid; grid-template-columns: 1fr 2fr;
-  gap: 5rem; align-items: start; margin-top: 3rem;
-}
-.services-intro .body-text { margin-top: 1.2rem; max-width: 280px; }
-.svc-list { list-style: none; border-top: 1px solid var(--stone); }
-.svc-item {
-  padding: 1.8rem 0;
-  border-bottom: 1px solid var(--stone);
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 1rem; align-items: start;
-}
-.svc-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-size: 0.78rem; color: var(--stone);
-  display: block; margin-bottom: 0.5rem;
+  font-style: italic; font-size: 1rem; color: var(--gold);
+  margin-bottom: 1rem; display: block;
 }
 .svc-name {
-  font-size: 1rem; font-weight: 400; color: var(--ink); margin-bottom: 0.4rem;
-}
-.svc-desc { font-size: 0.8rem; color: var(--mid); line-height: 1.75; max-width: 420px; }
-.svc-pill {
-  font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--sage); border: 1px solid currentColor;
-  padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap; margin-top: 4px;
-}
-
-/* ── WORK ── */
-#work { background: var(--warm); }
-.work-header {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem;
-}
-.work-header .body-text { max-width: 340px; }
-.work-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-}
-.work-card {
-  position: relative; border-radius: 3px; overflow: hidden;
-  aspect-ratio: 4/3; display: block; text-decoration: none;
-}
-.work-card img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 0.5s ease; filter: brightness(0.88) saturate(0.85);
-}
-.work-card:hover img { transform: scale(1.04); }
-.work-card-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(28,28,26,0.7) 0%, rgba(28,28,26,0.1) 55%, transparent 100%);
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 1.4rem;
-}
-.work-card-tag {
-  font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(255,255,255,0.5); margin-bottom: 0.3rem;
-}
-.work-card-name {
   font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 300;
-  font-size: 1.2rem; color: white; line-height: 1.2;
+  font-style: italic; font-size: 1.5rem; font-weight: 400;
+  color: var(--ink); margin-bottom: 0.8rem;
 }
-.work-card-placeholder {
-  position: relative; border-radius: 3px; overflow: hidden;
-  aspect-ratio: 4/3; display: flex; align-items: flex-end;
-  background: var(--stone); text-decoration: none;
-  transition: background 0.3s;
+.svc-desc { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.85; max-width: 380px; }
+.svc-stamp {
+  position: absolute; top: 2.2rem; right: 2.2rem;
+  width: 44px; height: 44px;
+  border: 1.5px solid var(--gold-lt);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.55;
 }
-.work-card-placeholder:hover { background: #D5D1C8; }
-.work-cta { margin-top: 2rem; }
+.svc-stamp svg { width: 18px; height: 18px; stroke: var(--gold); }
 
-/* ── PROCESS ── */
-#process { background: var(--cream); }
-.process-cols {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0; margin-top: 3rem;
-  border-top: 1px solid var(--stone);
+/* ── DEMO SECTION — iPads ── */
+#demos {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 7rem 3rem;
 }
-.process-step {
-  padding: 2rem 1.5rem 2rem 0;
-  border-right: 1px solid var(--stone);
+#demos .eyebrow { color: var(--gold-lt); }
+#demos .eyebrow::before { background: var(--gold-lt); }
+#demos .section-title { color: var(--paper); }
+.demos-intro { text-align: center; max-width: 600px; margin: 0 auto 4.5rem; }
+.demos-intro .eyebrow { justify-content: center; }
+.demos-intro .eyebrow::before { display: none; }
+.demos-intro .section-title { margin-bottom: 1rem; }
+.demos-intro .body-text { color: rgba(246,240,226,0.55); margin: 0 auto; }
+
+.ipad-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
-.process-step:last-child { border-right: none; }
-.process-step:not(:first-child) { padding-left: 1.5rem; }
-.process-n {
+.ipad-frame {
+  width: 320px;
+  background: linear-gradient(145deg, #2a2a28, #161614);
+  border-radius: 18px;
+  padding: 14px 14px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.04);
+  position: relative;
+  transition: transform 0.4s ease;
+}
+.ipad-frame:hover { transform: translateY(-6px); }
+.ipad-frame:nth-child(2) { width: 360px; margin-top: -1.5rem; }
+.ipad-cam {
+  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+  width: 5px; height: 5px; border-radius: 50%;
+  background: #444;
+}
+.ipad-screen {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #111;
+  position: relative;
+}
+.ipad-screen img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  display: block;
+}
+.ipad-screen-empty {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #1d1d1b, #2a2a26);
+}
+.ipad-screen-empty span {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4rem; color: rgba(246,240,226,0.3);
+}
+.ipad-label {
+  text-align: center; margin-top: 1.4rem;
+}
+.ipad-label-tag {
+  font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-lt); margin-bottom: 0.3rem;
+}
+.ipad-label-name {
   font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-size: 2.5rem; color: var(--stone);
-  line-height: 1; margin-bottom: 1rem;
+  font-style: italic; font-size: 1.15rem; color: var(--paper);
 }
-.process-name {
-  font-size: 0.82rem; font-weight: 500; color: var(--ink);
-  margin-bottom: 0.5rem; letter-spacing: 0.02em;
+.ipad-link {
+  display: inline-block; margin-top: 0.5rem;
+  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(246,240,226,0.4); text-decoration: none;
+  border-bottom: 1px solid rgba(246,240,226,0.2);
+  transition: color 0.2s, border-color 0.2s;
 }
-.process-desc { font-size: 0.76rem; color: var(--mid); line-height: 1.75; }
+.ipad-link:hover { color: var(--gold-lt); border-color: var(--gold-lt); }
 
 /* ── CONTACT ── */
-#contact { background: var(--warm); }
+#contact { background: var(--paper-2); }
 .contact-layout {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 6rem; align-items: start; margin-top: 3rem;
+  gap: 5rem; align-items: start; margin-top: 3rem;
 }
 .contact-info .body-text { margin-top: 1.2rem; }
-.contact-links { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.contact-links { margin-top: 2.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
 .contact-links a {
-  font-size: 0.8rem; color: var(--ink); text-decoration: none;
-  display: flex; align-items: center; gap: 0.5rem;
-  border-bottom: 1px solid var(--stone); padding-bottom: 0.6rem;
-  transition: border-color 0.2s;
+  font-size: 0.82rem; color: var(--ink); text-decoration: none;
+  display: flex; align-items: baseline; gap: 0.6rem;
+  border-bottom: 1px solid var(--line); padding-bottom: 0.65rem;
+  transition: border-color 0.2s, color 0.2s;
 }
-.contact-links a:hover { border-color: var(--sage); color: var(--sage); }
-.contact-links a span { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); min-width: 55px; }
-.form-field { margin-bottom: 0; }
+.contact-links a:hover { border-color: var(--wax); color: var(--wax); }
+.contact-links a span { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); min-width: 60px; }
+
+.contact-form-wrap {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 2.6rem 2.4rem;
+  position: relative;
+}
+.contact-form-wrap::before {
+  content: '';
+  position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+  border: 1px solid var(--line);
+  pointer-events: none;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-field input,
 .form-field textarea,
 .form-field select {
   width: 100%; background: transparent;
-  border: none; border-bottom: 1px solid var(--stone);
-  padding: 0.9rem 0; margin-bottom: 0.1rem;
+  border: none; border-bottom: 1px solid var(--line);
+  padding: 0.85rem 0; margin-bottom: 1.1rem;
   font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 300;
   color: var(--ink); outline: none;
   transition: border-color 0.2s; -webkit-appearance: none;
 }
 .form-field input:focus,
 .form-field textarea:focus,
-.form-field select:focus { border-bottom-color: var(--sage); }
+.form-field select:focus { border-bottom-color: var(--wax); }
 .form-field input::placeholder,
-.form-field textarea::placeholder { color: var(--stone); }
-.form-field select { color: var(--mid); cursor: pointer; margin-bottom: 0; }
+.form-field textarea::placeholder { color: #B5A98C; }
+.form-field select { color: var(--ink-soft); cursor: pointer; }
 .form-field select option { color: var(--ink); }
-.form-field textarea { resize: none; height: 75px; margin-top: 0.8rem; }
-.form-fields { display: flex; flex-direction: column; gap: 0; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-field textarea { resize: none; height: 80px; }
 .form-submit {
-  margin-top: 1.8rem; width: 100%;
-  background: var(--ink); color: var(--cream);
-  border: none; padding: 0.9rem;
+  width: 100%; margin-top: 0.4rem;
+  background: var(--wax); color: var(--paper);
+  border: none; padding: 0.9rem; border-radius: 2px;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
   cursor: pointer; transition: background 0.2s;
 }
-.form-submit:hover { background: var(--sage); }
+.form-submit:hover { background: var(--wax-dk); }
 .form-ok {
-  display: none; margin-top: 1.5rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-size: 1.2rem; color: var(--sage);
+  display: none; margin-top: 1.4rem; text-align: center;
+  font-family: 'Dancing Script', cursive; font-size: 1.4rem; color: var(--wax);
 }
 
 /* ── FOOTER ── */
-footer {
-  background: var(--ink);
-  padding: 3rem 3rem 2rem;
-}
+footer { background: var(--ink); padding: 3rem 3rem 2rem; position: relative; z-index: 1; }
 .footer-top {
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 1.5rem;
-  padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding-bottom: 2rem; border-bottom: 1px solid rgba(246,240,226,0.08);
 }
-.footer-brand {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 300;
-  font-size: 1.3rem; color: rgba(255,255,255,0.65);
-}
+.footer-brand { font-size: 1.4rem; color: rgba(246,240,226,0.7); }
+.footer-brand .script { color: var(--gold-lt); }
 .footer-nav { display: flex; gap: 1.8rem; list-style: none; flex-wrap: wrap; }
 .footer-nav a {
   font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s;
+  color: rgba(246,240,226,0.35); text-decoration: none; transition: color 0.2s;
 }
-.footer-nav a:hover { color: rgba(255,255,255,0.65); }
+.footer-nav a:hover { color: var(--gold-lt); }
 .footer-bottom {
-  margin-top: 1.5rem;
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 1rem;
+  margin-top: 1.5rem; display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
 }
-.footer-copy { font-size: 0.6rem; letter-spacing: 0.06em; color: rgba(255,255,255,0.2); }
-.footer-email {
-  font-size: 0.65rem; color: rgba(255,255,255,0.3);
-  text-decoration: none; transition: color 0.2s;
-}
-.footer-email:hover { color: var(--sage); }
+.footer-copy { font-size: 0.62rem; letter-spacing: 0.05em; color: rgba(246,240,226,0.22); }
+.footer-email { font-size: 0.68rem; color: rgba(246,240,226,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-email:hover { color: var(--gold-lt); }
 
 /* ── MOBILE OVERLAY ── */
 .mobile-overlay {
-  display: none; position: fixed; inset: 0;
-  background: var(--cream); z-index: 200;
-  flex-direction: column; justify-content: center; align-items: center; gap: 2.5rem;
+  display: none; position: fixed; inset: 0; background: var(--paper); z-index: 200;
+  flex-direction: column; justify-content: center; align-items: center; gap: 2.4rem;
 }
 .mobile-overlay.open { display: flex; }
 .mobile-overlay a {
   font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 300;
-  font-size: 2.8rem; color: var(--ink); text-decoration: none;
+  font-style: italic; font-weight: 300; font-size: 2.6rem;
+  color: var(--ink); text-decoration: none;
 }
 .mobile-close {
   position: absolute; top: 1.5rem; right: 2rem;
-  font-size: 1.8rem; color: var(--mid);
+  font-size: 1.8rem; color: var(--ink-soft);
   cursor: pointer; background: none; border: none; line-height: 1;
 }
 
@@ -448,37 +432,25 @@ footer {
   nav { padding: 1.2rem 1.8rem; }
   .nav-links, .nav-btn { display: none; }
   .hamburger { display: flex; }
-  #hero { grid-template-columns: 1fr; padding: 7rem 1.8rem 4rem; min-height: auto; }
-  .hero-right { display: none; }
-  .section { padding: 5rem 1.8rem; }
-  .about-layout { grid-template-columns: 1fr; gap: 3rem; }
-  .about-img-wrap { max-width: 400px; }
-  .services-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-  .services-intro .body-text { max-width: 100%; }
-  .work-grid { grid-template-columns: 1fr 1fr; }
-  .process-cols { grid-template-columns: 1fr 1fr; }
-  .process-step:nth-child(2) { border-right: none; }
-  .process-step:nth-child(3) { border-top: 1px solid var(--stone); }
+  .section { padding: 5rem 1.6rem; }
+  #hero { padding: 7rem 1.6rem 4rem; }
+  .letter-card { padding: 2.4rem 1.8rem; }
+  .svc-grid { grid-template-columns: 1fr; }
   .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .ipad-row { gap: 2rem; }
+  .ipad-frame, .ipad-frame:nth-child(2) { width: 280px; margin-top: 0; }
   .footer-top { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 560px) {
   #hero { padding: 6.5rem 1.2rem 3rem; }
   .section { padding: 4rem 1.2rem; }
   nav { padding: 1rem 1.2rem; }
-  .work-grid { grid-template-columns: 1fr; }
-  .process-cols { grid-template-columns: 1fr; }
-  .process-step { border-right: none; padding-left: 0; border-bottom: 1px solid var(--stone); }
-  .process-step:last-child { border-bottom: none; }
   .form-row { grid-template-columns: 1fr; }
-  .about-stats { grid-template-columns: 1fr; }
-  .stat:nth-child(odd) { border-right: none; padding-right: 0; }
-  .stat:nth-child(even) { padding-left: 0; }
+  .ipad-frame, .ipad-frame:nth-child(2) { width: 100%; max-width: 320px; }
   .footer-top, .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track { animation: none; }
-  .work-card img { transition: none; }
+  .ipad-frame { transition: none; }
 }
 </style>
 </head>
@@ -486,15 +458,14 @@ footer {
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="#" class="nav-logo"><em>Dreamie</em> Designs</a>
+  <a href="#" class="nav-logo"><span class="script">Dreamie</span> Designs</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#process">Process</a></li>
+    <li><a href="#demos">Demos</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-btn">Start a project</a>
+  <a href="#contact" class="nav-btn">Write to us</a>
   <button class="hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -505,268 +476,185 @@ footer {
   <button class="mobile-close" id="mobileClose">&#215;</button>
   <a href="#about" onclick="closeMobile()">About</a>
   <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#work" onclick="closeMobile()">Work</a>
-  <a href="#process" onclick="closeMobile()">Process</a>
+  <a href="#demos" onclick="closeMobile()">Demos</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">Web Design Studio &mdash; London</p>
-    <h1 class="hero-headline">
-      Beautiful websites<br/>that actually<br/><em>work for you.</em>
-    </h1>
-    <p class="hero-sub">Custom-built websites for businesses that care how they show up online. No templates, no drag-and-drop builders &mdash; just considered design and clean code.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Start a project</a>
-      <a href="#work" class="btn-ghost">See the work</a>
-    </div>
+  <div class="wax-seal"><span class="wax-seal-mark script">D</span></div>
+  <p class="hero-dateline">London &middot; Web Design Studio</p>
+  <p class="hero-salutation">Dear business owner,</p>
+  <h1 class="hero-headline">
+    Your website should feel<br/>like a <span class="accent">love letter</span><br/>to your customers.
+  </h1>
+  <p class="hero-sub">Beautiful design, automated conversations, and the systems behind the scenes — all written with the same care as a letter worth keeping.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-wax">Begin the conversation</a>
+    <a href="#demos" class="btn-line">See the work</a>
   </div>
-  <div class="hero-right">
-    <img class="hero-img-main"
-      src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=900&q=80"
-      alt="Web design on screen"/>
-    <img class="hero-img-accent"
-      src="https://images.unsplash.com/photo-1616469832301-ffaeadc68cf3?w=600&q=80"
-      alt="Design detail"/>
-    <div class="hero-badge">
-      <strong>100%</strong>
-      Custom<br/>No templates
-    </div>
-  </div>
+  <p class="hero-signoff">With care, Dreamie Designs</p>
 </section>
 
-<!-- TICKER -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span class="ticker-item"><em>&mdash;</em>Web Design</span>
-    <span class="ticker-item"><em>&mdash;</em>Landing Pages</span>
-    <span class="ticker-item"><em>&mdash;</em>SEO</span>
-    <span class="ticker-item"><em>&mdash;</em>Copywriting</span>
-    <span class="ticker-item"><em>&mdash;</em>E-Commerce</span>
-    <span class="ticker-item"><em>&mdash;</em>Mockup Sites</span>
-    <span class="ticker-item"><em>&mdash;</em>Ongoing Care</span>
-    <span class="ticker-item"><em>&mdash;</em>Portfolio Sites</span>
-    <span class="ticker-item"><em>&mdash;</em>Web Design</span>
-    <span class="ticker-item"><em>&mdash;</em>Landing Pages</span>
-    <span class="ticker-item"><em>&mdash;</em>SEO</span>
-    <span class="ticker-item"><em>&mdash;</em>Copywriting</span>
-    <span class="ticker-item"><em>&mdash;</em>E-Commerce</span>
-    <span class="ticker-item"><em>&mdash;</em>Mockup Sites</span>
-    <span class="ticker-item"><em>&mdash;</em>Ongoing Care</span>
-    <span class="ticker-item"><em>&mdash;</em>Portfolio Sites</span>
-  </div>
-</div>
+<div class="tear-divider"></div>
 
 <!-- ABOUT -->
 <section class="section" id="about">
   <div class="section-inner">
-    <span class="eyebrow">About</span>
-    <div class="about-layout">
-      <div class="about-img-wrap">
-        <img class="about-img"
-          src="https://images.unsplash.com/photo-1555421689-491a97ff2040?w=700&q=80"
-          alt="Designer at work"/>
-        <div class="about-caption">
-          London-based<br/>working worldwide
-        </div>
+    <div style="text-align:center;">
+      <span class="eyebrow" style="justify-content:center;">About</span>
+    </div>
+    <div class="letter-card">
+      <p class="letter-greeting">A little about us &mdash;</p>
+      <div class="letter-body">
+        <p>We started Dreamie Designs because too many good businesses are let down by websites that feel like an afterthought &mdash; clunky, generic, forgettable.</p>
+        <p>We believe a website is the first impression most people will ever have of you. So we treat every project the way you'd write to someone who matters: carefully, honestly, and with real attention to detail.</p>
+        <p>Behind the pretty design sits something more practical too &mdash; automated chat that actually helps your customers, automations that save you hours, and a CRM that keeps everything in one place. The romance, and the plumbing.</p>
       </div>
-      <div class="about-content">
-        <h2 class="section-title">Design that does<br/>something.</h2>
-        <p class="body-text">I'm a web designer based in London, building websites for businesses that want more than a template — whether that's a local shop in Harrow or a growing brand anywhere in the world.</p>
-        <p class="body-text">Every site is written, designed and built by hand. No page builders, no shortcuts. Just clean code that loads fast and looks good on any screen.</p>
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-n">100%</div>
-            <div class="stat-l">Custom — no templates</div>
-          </div>
-          <div class="stat">
-            <div class="stat-n">Fast</div>
-            <div class="stat-l">Turnaround from first call</div>
-          </div>
-          <div class="stat">
-            <div class="stat-n">SEO</div>
-            <div class="stat-l">Built-in from the start</div>
-          </div>
-          <div class="stat">
-            <div class="stat-n">Mobile</div>
-            <div class="stat-l">First on every build</div>
-          </div>
-        </div>
-      </div>
+      <p class="letter-signature script">Dreamie Designs</p>
     </div>
   </div>
 </section>
+
+<div class="tear-divider flip"></div>
 
 <!-- SERVICES -->
 <section class="section" id="services">
   <div class="section-inner">
-    <div class="services-layout">
-      <div class="services-intro">
-        <span class="eyebrow">Services</span>
-        <h2 class="section-title">What I do.</h2>
-        <p class="body-text">From a one-page launch site to a full brand presence — I'll work out what you actually need and build it properly.</p>
+    <div class="svc-header">
+      <span class="eyebrow">Services</span>
+      <h2 class="section-title">Four ways we can help.</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-stamp">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.392 0-4.744-.175-7.135-.514-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+        </div>
+        <span class="svc-roman">I.</span>
+        <h3 class="svc-name">Web Design</h3>
+        <p class="svc-desc">A site built around your business, not a template with your logo dropped in. Designed to be beautiful, fast, and to actually bring people through your door.</p>
       </div>
-      <ul class="svc-list">
-        <li class="svc-item">
-          <div>
-            <span class="svc-num">i.</span>
-            <div class="svc-name">Web Design &amp; Development</div>
-            <div class="svc-desc">Custom websites built to reflect your brand — beautiful, fast, and built to convert. From single pages to full multi-page sites.</div>
-          </div>
-          <div class="svc-pill">Most popular</div>
-        </li>
-        <li class="svc-item">
-          <div>
-            <span class="svc-num">ii.</span>
-            <div class="svc-name">Landing Pages</div>
-            <div class="svc-desc">Focused pages for campaigns, launches, and lead generation. Designed to get people to act.</div>
-          </div>
-          <div class="svc-pill">Quick delivery</div>
-        </li>
-        <li class="svc-item">
-          <div>
-            <span class="svc-num">iii.</span>
-            <div class="svc-name">Mockup &amp; Demo Sites</div>
-            <div class="svc-desc">Pre-built demo websites for cold outreach — show prospective clients exactly what their site could look like before they've said yes.</div>
-          </div>
-          <div class="svc-pill">Outreach tool</div>
-        </li>
-        <li class="svc-item">
-          <div>
-            <span class="svc-num">iv.</span>
-            <div class="svc-name">SEO &amp; Copywriting</div>
-            <div class="svc-desc">Words that sound like you and get found. Page copy and keyword strategy built into the design from day one.</div>
-          </div>
-          <div class="svc-pill">Add-on</div>
-        </li>
-        <li class="svc-item">
-          <div>
-            <span class="svc-num">v.</span>
-            <div class="svc-name">Ongoing Maintenance</div>
-            <div class="svc-desc">Updates, changes, and ongoing care so you're never left managing it alone.</div>
-          </div>
-          <div class="svc-pill">Monthly</div>
-        </li>
-      </ul>
+
+      <div class="svc-card">
+        <div class="svc-stamp">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+        </div>
+        <span class="svc-roman">II.</span>
+        <h3 class="svc-name">Automated Chat</h3>
+        <p class="svc-desc">A chat assistant that answers questions, books calls, and qualifies enquiries while you're busy doing the actual work. Always on, never tired.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-stamp">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495"/></svg>
+        </div>
+        <span class="svc-roman">III.</span>
+        <h3 class="svc-name">Automations</h3>
+        <p class="svc-desc">The quiet machinery behind a calm business &mdash; follow-up emails, lead routing, booking confirmations, reminders. Set up once, runs forever.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-stamp">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+        </div>
+        <span class="svc-roman">IV.</span>
+        <h3 class="svc-name">CRM</h3>
+        <p class="svc-desc">Every enquiry, conversation and customer kept in one tidy place &mdash; so nothing falls through the cracks and nobody gets forgotten.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WORK -->
-<section class="section" id="work">
-  <div class="section-inner">
-    <div class="work-header">
-      <div>
-        <span class="eyebrow">Work</span>
-        <h2 class="section-title">Recent projects.</h2>
-      </div>
-      <p class="body-text">A selection of recent builds — from local trade businesses to portfolio and service sites.</p>
-    </div>
-    <div class="work-grid">
-      <a href="https://selma123x.github.io/sullivan-roofing/" target="_blank" class="work-card">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=75" alt="Sullivan's Roofing"/>
-        <div class="work-card-overlay">
-          <div class="work-card-tag">Roofing · Harrow</div>
-          <div class="work-card-name">Sullivan's Roofing Services</div>
-        </div>
-      </a>
-      <a href="https://selma123x.github.io/msr-v2/" target="_blank" class="work-card">
-        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=75" alt="Master Roof Solutions"/>
-        <div class="work-card-overlay">
-          <div class="work-card-tag">Flat Roofing · London</div>
-          <div class="work-card-name">Master Roof Solutions</div>
-        </div>
-      </a>
-      <div class="work-card-placeholder">
-        <div class="work-card-overlay">
-          <div class="work-card-tag">Your business</div>
-          <div class="work-card-name" style="color:var(--mid);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;">Next project?</div>
+<!-- DEMO IPADS -->
+<section id="demos">
+  <div class="demos-intro">
+    <span class="eyebrow">Demos</span>
+    <h2 class="section-title">A few we're proud of.</h2>
+    <p class="body-text">Live websites built and shipped for real businesses.</p>
+  </div>
+  <div class="ipad-row">
+
+    <div>
+      <div class="ipad-frame">
+        <span class="ipad-cam"></span>
+        <div class="ipad-screen">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75" alt="Sullivan's Roofing demo site"/>
         </div>
       </div>
+      <div class="ipad-label">
+        <div class="ipad-label-tag">Roofing &middot; Harrow</div>
+        <div class="ipad-label-name">Sullivan's Roofing</div>
+        <a href="https://selma123x.github.io/sullivan-roofing/" target="_blank" class="ipad-link">View live site</a>
+      </div>
     </div>
-    <div class="work-cta">
-      <a href="#contact" class="btn-ghost">Start your project &rarr;</a>
+
+    <div>
+      <div class="ipad-frame">
+        <span class="ipad-cam"></span>
+        <div class="ipad-screen">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75" alt="Master Roof Solutions demo site"/>
+        </div>
+      </div>
+      <div class="ipad-label">
+        <div class="ipad-label-tag">Flat Roofing &middot; London</div>
+        <div class="ipad-label-name">Master Roof Solutions</div>
+        <a href="https://selma123x.github.io/msr-v2/" target="_blank" class="ipad-link">View live site</a>
+      </div>
     </div>
+
+    <div>
+      <div class="ipad-frame">
+        <span class="ipad-cam"></span>
+        <div class="ipad-screen">
+          <div class="ipad-screen-empty"><span>Yours, next?</span></div>
+        </div>
+      </div>
+      <div class="ipad-label">
+        <div class="ipad-label-tag">Coming soon</div>
+        <div class="ipad-label-name">Your business</div>
+        <a href="#contact" class="ipad-link">Start a project</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="section" id="process">
-  <div class="section-inner">
-    <span class="eyebrow">Process</span>
-    <h2 class="section-title">Simple from start<br/>to finish.</h2>
-    <div class="process-cols">
-      <div class="process-step">
-        <div class="process-n">1.</div>
-        <div class="process-name">Discovery</div>
-        <div class="process-desc">We talk through your goals, your audience, and what you want the site to actually do for your business.</div>
-      </div>
-      <div class="process-step">
-        <div class="process-n">2.</div>
-        <div class="process-name">Design</div>
-        <div class="process-desc">I design something that fits your brand — not a template with your logo dropped in.</div>
-      </div>
-      <div class="process-step">
-        <div class="process-n">3.</div>
-        <div class="process-name">Build</div>
-        <div class="process-desc">Hand-coded, mobile-first, and fast. Built to rank well and load even faster.</div>
-      </div>
-      <div class="process-step">
-        <div class="process-n">4.</div>
-        <div class="process-name">Launch</div>
-        <div class="process-desc">We review together, make any final tweaks, and go live. I'm still reachable after that.</div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="tear-divider"></div>
 
 <!-- CONTACT -->
 <section class="section" id="contact">
   <div class="section-inner">
+    <div style="text-align:center; margin-bottom: 1rem;">
+      <span class="eyebrow" style="justify-content:center;">Contact</span>
+      <h2 class="section-title">Write to us.</h2>
+    </div>
     <div class="contact-layout">
       <div class="contact-info">
-        <span class="eyebrow">Contact</span>
-        <h2 class="section-title">Let's make<br/>something good.</h2>
-        <p class="body-text">Have a project in mind, or just want to talk it through? Get in touch &mdash; no hard sell, just a conversation.</p>
+        <p class="body-text">Tell us a little about your business and what you're hoping for &mdash; we'll write back personally, not with a template reply.</p>
         <div class="contact-links">
-          <a href="mailto:hello@dreamiedesigns.co.uk">
-            <span>Email</span> hello@dreamiedesigns.co.uk
-          </a>
-          <a href="https://www.dreamiedesigns.co.uk">
-            <span>Web</span> dreamiedesigns.co.uk
-          </a>
-          <a href="https://instagram.com" target="_blank">
-            <span>Instagram</span> @dreamiedesigns
-          </a>
+          <a href="mailto:hello@dreamiedesigns.co.uk"><span>Email</span> hello@dreamiedesigns.co.uk</a>
+          <a href="https://www.dreamiedesigns.co.uk"><span>Web</span> dreamiedesigns.co.uk</a>
+          <a href="https://instagram.com" target="_blank"><span>Instagram</span> @dreamiedesigns</a>
         </div>
       </div>
-      <div>
+      <div class="contact-form-wrap">
         <form id="contactForm" action="https://formspree.io/f/placeholder" method="POST">
-          <div class="form-fields">
-            <div class="form-row">
-              <div class="form-field"><input type="text" name="name" placeholder="Your name" required/></div>
-              <div class="form-field"><input type="email" name="email" placeholder="Email address" required/></div>
-            </div>
-            <div class="form-field">
-              <select name="service">
-                <option value="" disabled selected>What are you looking for?</option>
-                <option>New website</option>
-                <option>Landing page</option>
-                <option>Mockup / demo site</option>
-                <option>SEO &amp; copywriting</option>
-                <option>Ongoing maintenance</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <textarea name="message" placeholder="Tell me about your project..."></textarea>
-            </div>
+          <div class="form-field"><input type="text" name="name" placeholder="Your name" required/></div>
+          <div class="form-field"><input type="email" name="email" placeholder="Email address" required/></div>
+          <div class="form-field">
+            <select name="service">
+              <option value="" disabled selected>What are you looking for?</option>
+              <option>Web Design</option>
+              <option>Automated Chat</option>
+              <option>Automations</option>
+              <option>CRM</option>
+              <option>Not sure yet</option>
+            </select>
           </div>
-          <button type="submit" class="form-submit">Send message</button>
+          <div class="form-field"><textarea name="message" placeholder="Tell us about your business..."></textarea></div>
+          <button type="submit" class="form-submit">Send your letter</button>
         </form>
-        <div class="form-ok" id="formOk"><em>Thank you &mdash; I'll be in touch soon.</em></div>
+        <div class="form-ok" id="formOk">Received, with thanks. We'll write back soon.</div>
       </div>
     </div>
   </div>
@@ -775,12 +663,11 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
-    <div class="footer-brand"><em>Dreamie</em> Designs</div>
+    <div class="footer-brand"><span class="script">Dreamie</span> Designs</div>
     <ul class="footer-nav">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#process">Process</a></li>
+      <li><a href="#demos">Demos</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -791,34 +678,25 @@ footer {
 </footer>
 
 <script>
-// Nav scroll state
 window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
 });
-
-// Mobile menu
 document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('mobileOverlay').classList.add('open');
 });
 document.getElementById('mobileClose').addEventListener('click', closeMobile);
 function closeMobile() { document.getElementById('mobileOverlay').classList.remove('open'); }
 
-// Contact form
 const form = document.getElementById('contactForm');
 form.addEventListener('submit', async e => {
   e.preventDefault();
   const btn = form.querySelector('button');
   btn.textContent = 'Sending...'; btn.disabled = true;
   try {
-    const res = await fetch(form.action, {
-      method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' }
-    });
-    form.style.display = 'none';
-    document.getElementById('formOk').style.display = 'block';
-  } catch {
-    form.style.display = 'none';
-    document.getElementById('formOk').style.display = 'block';
-  }
+    await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+  } catch (err) {}
+  form.style.display = 'none';
+  document.getElementById('formOk').style.display = 'block';
 });
 </script>
 </body>
