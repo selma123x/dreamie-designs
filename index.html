@@ -245,8 +245,8 @@ nav.scrolled { border-bottom-color: var(--line); }
 .ov-field::placeholder { color: transparent; }
 .ov-name   { top: 23.01%; left: 24.0%; width: 62.3%; height: 4.71%; font-size: var(--fs-form); }
 .ov-email  { top: 32.8%; left: 24.0%; width: 62.3%; height: 4.62%; font-size: var(--fs-form); }
-.ov-subject{ top: 42.0%; left: 24.0%; width: 62.3%; height: 4.71%; font-size: var(--fs-form); cursor: pointer; color: transparent; }
-.ov-subject option { font-style: normal; color: var(--ink); }
+.ov-subject{ top: 42.0%; left: 24.0%; width: 62.3%; height: 4.71%; font-size: var(--fs-form); cursor: pointer; color: var(--ink); background: transparent; }
+.ov-subject option { font-style: normal; color: var(--ink); background: #fff; }
 .ov-message{ top: 51.62%; left: 13.7%; width: 72.6%; height: 18.77%; font-size: var(--fs-form); resize: none; line-height: 1.5; padding-top: 0.3rem; padding-left: 0.5rem; }
 .ov-submit {
   position: absolute;
@@ -481,9 +481,11 @@ form.addEventListener('submit', function(e) {
     from_email: form.querySelector('[name="email"]').value,
     name:       form.querySelector('[name="name"]').value,
     email:      form.querySelector('[name="email"]').value,
-    title:      form.querySelector('[name="service"]').value,
+    title:      form.querySelector('[name="service"]').value || 'Not specified',
     message:    form.querySelector('[name="message"]').value,
   };
+
+  console.log('Sending to EmailJS:', templateParams);
 
   emailjs.send('service_qm30wa6', 'template_yx85occ', templateParams)
     .then(function() {
