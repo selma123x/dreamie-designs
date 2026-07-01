@@ -245,8 +245,16 @@ nav.scrolled { border-bottom-color: var(--line); }
 .ov-field::placeholder { color: transparent; }
 .ov-name   { top: 23.01%; left: 24.0%; width: 62.3%; height: 4.71%; font-size: var(--fs-form); }
 .ov-email  { top: 32.8%; left: 24.0%; width: 62.3%; height: 4.62%; font-size: var(--fs-form); }
-.ov-subject{ top: 42.0%; left: 24.0%; width: 62.3%; height: 4.71%; font-size: var(--fs-form); cursor: pointer; color: var(--ink); background: transparent; }
-.ov-subject option { font-style: normal; color: var(--ink); background: #fff; }
+.ov-subject{ 
+  top: 42.0%; left: 24.0%; width: 62.3%; height: 4.71%; 
+  font-size: var(--fs-form); 
+  cursor: pointer; 
+  color: #2B1E1C; 
+  background: rgba(255,255,255,0.01);
+  opacity: 1;
+  -webkit-text-fill-color: #2B1E1C;
+}
+.ov-subject option { font-style: normal; color: #2B1E1C; background: #fff; }
 .ov-message{ top: 51.62%; left: 13.7%; width: 72.6%; height: 18.77%; font-size: var(--fs-form); resize: none; line-height: 1.5; padding-top: 0.3rem; padding-left: 0.5rem; }
 .ov-submit {
   position: absolute;
