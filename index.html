@@ -354,7 +354,7 @@ footer { background: var(--crimson); padding: 3rem 3rem 2rem; }
   <div class="section-inner">
     <div class="contact-wrap">
       <div class="contact-card-img">
-        <form id="contactForm" action="https://formspree.io/f/placeholder" method="POST">
+        <form id="contactForm">
           <input type="text" name="name" class="ov-field ov-name" required/>
           <input type="email" name="email" class="ov-field ov-email" required/>
           <select name="service" class="ov-field ov-subject">
@@ -457,7 +457,10 @@ footer { background: var(--crimson); padding: 3rem 3rem 2rem; }
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+emailjs.init('u7AKaCwl6QL2j58ya');
+
 window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
 });
@@ -468,15 +471,27 @@ document.getElementById('mobileClose').addEventListener('click', closeMobile);
 function closeMobile() { document.getElementById('mobileOverlay').classList.remove('open'); }
 
 const form = document.getElementById('contactForm');
-form.addEventListener('submit', async e => {
+form.addEventListener('submit', function(e) {
   e.preventDefault();
   const btn = form.querySelector('button');
   btn.disabled = true;
-  try {
-    await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-  } catch (err) {}
-  form.style.display = 'none';
-  document.getElementById('formOk').style.display = 'block';
+
+  const templateParams = {
+    from_name:  form.querySelector('[name="name"]').value,
+    from_email: form.querySelector('[name="email"]').value,
+    service:    form.querySelector('[name="service"]').value,
+    message:    form.querySelector('[name="message"]').value,
+  };
+
+  emailjs.send('service_qm30wa6', 'template_yx85occ', templateParams)
+    .then(function() {
+      form.style.display = 'none';
+      document.getElementById('formOk').style.display = 'block';
+    }, function(error) {
+      btn.disabled = false;
+      alert('Sorry, something went wrong. Please email us directly at info@dreamiedesigns.co.uk');
+      console.error('EmailJS error:', error);
+    });
 });
 </script>
 </body>
