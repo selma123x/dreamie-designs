@@ -264,7 +264,9 @@ nav.scrolled { border-bottom-color: var(--line); }
 .form-ok {
   display: none; margin-top: 1.6rem; text-align: center;
   font-family: 'Tangerine', cursive; font-weight: 700; font-size: var(--fs-script-lg); color: var(--crimson);
+  opacity: 0; transition: opacity 0.5s ease;
 }
+.form-ok.visible { opacity: 1; }
 
 /* ── FOOTER ── */
 footer { background: var(--crimson); padding: 3rem 3rem 2rem; }
@@ -498,7 +500,20 @@ form.addEventListener('submit', function(e) {
   emailjs.send('service_qm30wa6', 'template_h0a68o8', templateParams)
     .then(function() {
       form.style.display = 'none';
-      document.getElementById('formOk').style.display = 'block';
+      const ok = document.getElementById('formOk');
+      ok.style.display = 'block';
+      requestAnimationFrame(() => ok.classList.add('visible'));
+
+      // Restore the blank form after a few seconds so the message doesn't linger forever
+      setTimeout(() => {
+        ok.classList.remove('visible');
+        setTimeout(() => {
+          ok.style.display = 'none';
+          form.reset();
+          form.style.display = '';
+          btn.disabled = false;
+        }, 500);
+      }, 4000);
     }, function(error) {
       btn.disabled = false;
       alert('Sorry, something went wrong. Please email us directly at info@dreamiedesigns.co.uk');
